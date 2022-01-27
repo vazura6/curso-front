@@ -8,16 +8,27 @@ import { ClientesComponent } from './clientes/clientes.component';
 
 import { ClienteService} from './clientes/cliente.service';
 
+import { RouterModule, Routes} from '@angular/router';
+import { DirectivaComponent } from './directiva/directiva.component';
+
+
+const routes: Routes = [
+  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  {path: 'directivas', component: DirectivaComponent},
+  {path: 'clientes', component: ClientesComponent},
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ClientesComponent
+    ClientesComponent,
+    DirectivaComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent]
